@@ -11,7 +11,7 @@ Menggunakan:
 ## Running dan Konfigurasi
 1. Membutuhkan pembuatan database baru di PostgreSQL dengan nama: 
 
-    > salt-backend-task
+    > taskbackendsalt
 2. Mengubah file .env sesuai dengan local environment.
 3. Install dependencies dengan menggunakan command
 
