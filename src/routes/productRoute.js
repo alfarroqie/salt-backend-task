@@ -9,14 +9,14 @@ router.post('/create',validator.createProduct,productController.createProduct)
 
 // //read product
 router.get('/',productController.getAllProduct)
-router.get('/:id',productController.getProductById)
+router.get('/:id',validator.getProductById, productController.getProductById)
 
 // //update product
 router.put('/update/:id',validator.updateproduct, productController.updateProductById)
 
 // //delete product
 router.delete('/delete-all')
-router.delete('/delete/:id', productController.deleteProductById)
+router.delete('/delete/:id', validator.deleteProduct, productController.deleteProductById)
 
 
 module.exports = router

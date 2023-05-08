@@ -24,6 +24,14 @@ exports.getAllProduct = async(req,res,next) => {
 //controller to get a product by id
 exports.getProductById = async(req,res,next) => {
     try{
+        //validation req
+        const error = formatValidationResult(req)
+        if(!error.isEmpty()){
+            return res.status(400).json({
+                errors: error.array()
+            })
+        }
+
         const id = req.params.id
         const product = await Product.findByPk(id)
 
@@ -114,6 +122,14 @@ exports.updateProductById = async(req,res,next) => {
 //controller delete a product based on Id
 exports.deleteProductById = async(req,res,next) => {
     try{
+        //validation
+        const error = formatValidationResult(req)
+        if(!error.isEmpty()){
+            return res.status(400).json({
+                errors: error.array()
+            })
+        }
+
         const product = await Product.findByPk(req.params.id)
 
         if(product){

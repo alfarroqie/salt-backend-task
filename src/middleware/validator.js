@@ -1,21 +1,36 @@
 const { body, param } = require('express-validator')
 
-//validator body request for post product
+const formatParameterProduct = param('id', 'id harus berformat uuidv4').isUUID(4)
+
+//validator for product
 exports.createProduct = [
-    body('title', 'title tidak boleh kosong').exists(),
-    body('description', 'description tidak boleh kosong').exists(),
-    body('price', 'price harus lebih besar dari 0').isInt({gt:0})
+    body('title', 'title tidak boleh kosong').exists().isString(),
+    body('description', 'description tidak boleh kosong').exists().isString(),
+    body('price', 'price harus lebih besar dari 0').exists().isInt({gt:0})
 ]
 
-//validator body request for update product
 exports.updateproduct = [
-    body('price', 'price harus lebih besar dari 0').isInt({gt:0})
+    body('price', 'price harus lebih besar dari 0').isInt({gt:0}),
+    formatParameterProduct
 ]
 
+exports.getProductById = [
+    formatParameterProduct
+]
+
+exports.deleteProduct = [
+    formatParameterProduct
+]
+
+//validator for user
 exports.createUser = [
-    body('username', 'username tidak boleh kosong').exists(),
+    body('username', 'username tidak boleh kosong').exists().isString(),
+]
+exports.getUserByUsername = [
+    param('username', 'username harus berupa string').isString()
 ]
 
 exports.addProductLike = [
-    body('idProduct', 'idProduct tidak boleh kosong').exists(),
+    body('idProduct', 'idProduct tidak boleh kosong').exists().isUUID(4),
+    param('username', 'username harus berupa string').isString()
 ]

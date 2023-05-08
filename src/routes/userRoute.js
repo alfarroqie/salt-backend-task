@@ -12,7 +12,7 @@ router.post('/:username/add-product-likes',validator.addProductLike, userControl
 
 // get user's product likes
 router.get('/', userController.getAllUser)
-router.get('/:username', userController.getUserWithProductLikes)
+router.get('/:username', validator.getUserByUsername,userController.getUserWithProductLikes)
 
 module.exports = router
 
