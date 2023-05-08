@@ -30,16 +30,20 @@ Menggunakan:
 
 
 ## API Dokumentasi
-1. POST /product/create  {"title", "description, "price"}
-2. GET /product 
-3. GET /product/:id
-4. PUT /product/update  {"title", "description, "price"}
-5. DELETE /product/delete-all
-6. DELETE /product/delete/:id
-7. POST /user/create   {"username"}
-8. POST /user/:username/add-product-likes   {"idProduct"}
-9. GET /user
-10. GET /user/:username
+- POST /product/create - menambah/membuat product
+    > input => {"title", "description, "price"}
+- GET /product - mengambil semua product
+- GET /product/:id - mengambil product berdasarkan id
+- PUT /product/update/:id - update product berdasarkan id
+    > input => {"title", "description, "price"}
+- DELETE /product/delete-all - menghapus semua product
+- DELETE /product/delete/:id - menghapus product berdasarkan id
+- POST /user/create - membuat/menambahkan user
+    > input => {"username"}
+- POST /user/:username/add-product-likes  - menambahkan likes product berdasarkan username(user)
+    > input => {"idProduct"}
+- GET /user - mendapatkan semua user
+- GET /user/:username - mendapatkan user tertentu beserta dengan product likesnya apabila ada
 
 
 
